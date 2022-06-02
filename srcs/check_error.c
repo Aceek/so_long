@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:17:15 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/02 08:13:20 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/02 08:18:03 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,9 @@ char	**create_map(int fd)
 	return (map);
 }
 
-	int	ft_check_error(int ac, char *path)
+int	ft_check_error(int ac, char *path, char ***map)
 {
 	int		fd;
-	char	**map;
 
 	if (ac != 2)
 		return (-1);
@@ -84,11 +83,11 @@ char	**create_map(int fd)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (-3);
-	map = create_map(fd);
-	if (map == NULL)
+	*map = create_map(fd);
+	if (*map == NULL)
 		return (-1);
-	if (ft_check_map(map) == -1)
-		return (ft_destroy_tab(map), -4);
+	if (ft_check_map(*map) == -1)
+		return (ft_destroy_tab(*map), -4);
 	close (fd);
 	return (0);
 }
