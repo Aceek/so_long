@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 08:47:45 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 02:25:30 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 06:29:01 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@ typedef struct s_game {
 	void	*coin;
 	void	*out;
 	void	*back;
-	char	*addr;
 	char	**map;
-	int		bit_per_pixel;
-	int		line_length;
-	int		endian;
 	int		height;
 	int		width;
 	int		width_map;
 	int		height_map;
-	char	*path;
+	int		player_pos_x;
+	int		player_pos_y;
+	int		move;
+	int		collectible;
 }			t_game;
 
 typedef struct s_map
@@ -55,5 +54,8 @@ void	ft_destroy_tab(char **tab);
 int		ft_check_map(char **map, t_game *game);
 
 int	ft_show(char **map, t_game *game);
+int	ft_clean_cool(t_game *game);
+void	ft_up(t_game *game);
+void	ft_display_map(t_game *game);
 
 #endif

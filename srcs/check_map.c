@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 04:41:02 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 02:43:09 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 06:29:59 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int	ft_check_map(char **map, t_game *game)
 		return (-1);
 	if (conso.C == 0 || conso.E == 0 || conso.P != 1)
 		return (-1);
+	game->collectible = conso.C;
 	return (0);
 }

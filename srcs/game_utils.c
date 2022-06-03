@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 04:20:33 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 04:13:47 by ilinhard         ###   ########.fr       */
+/*   Created: 2022/06/03 05:22:05 by ilinhard          #+#    #+#             */
+/*   Updated: 2022/06/03 05:22:25 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	ft_clean_cool(t_game *game)
 {
-	int		error;
-	char	**map;
-	t_game	game;
-
-	error = ft_check_error(ac, av[1], &map, &game);
-	if (error < 0)
-		return (write_error(error));
-	ft_show(map, &game);
-	return (0);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->out);
+	mlx_destroy_image(game->mlx, game->pj);
+	mlx_destroy_image(game->mlx, game->coin);
+	mlx_destroy_image(game->mlx, game->back);
+	mlx_destroy_display(game->mlx);
+	ft_destroy_tab(game->map);
+	free(game->mlx);
+	exit (0);
 }
