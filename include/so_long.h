@@ -6,18 +6,18 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 08:47:45 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 06:53:17 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 08:47:46 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "libft.h"
-#include "mlx.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
+# include "libft.h"
+# include "mlx.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_game {
 	void	*mlx;
@@ -41,9 +41,9 @@ typedef struct s_game {
 
 typedef struct s_map
 {
-	int	C;
-	int	P;
-	int	E;
+	int	c;
+	int	p;
+	int	e;
 }	t_map;
 
 // Check_error.c
@@ -56,10 +56,10 @@ int		ft_check_error(int ac, char *path, char ***map, t_game *game);
 
 // check_map.c
 
-int	ft_check_wall(char **map);
-int	ft_check_carac(char c, t_map *conso);
-int	ft_check_mid(char **map, t_map *conso, t_game *game);
-int	ft_check_map(char **map, t_game *game);
+int		ft_check_wall(char **map);
+int		ft_check_carac(char c, t_map *conso);
+int		ft_check_mid(char **map, t_map *conso, t_game *game);
+int		ft_check_map(char **map, t_game *game);
 
 // game.c
 
@@ -78,6 +78,7 @@ void	ft_right(t_game *game);
 
 // game_utils.c
 
-int	ft_clean_cool(t_game *game);
+int		ft_clean_cool(t_game *game);
+void	ft_count_move(int *move);
 
 #endif

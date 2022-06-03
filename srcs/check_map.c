@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 04:41:02 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 06:29:59 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 08:46:26 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	ft_check_carac(char c, t_map *conso)
 	else if (c == '0')
 		return (0);
 	else if (c == 'C')
-		return (conso->C += 1, 0);
+		return (conso->c += 1, 0);
 	else if (c == 'P')
-		return (conso->P += 1, 0);
+		return (conso->p += 1, 0);
 	else if (c == 'E')
-		return (conso->E += 1, 0);
+		return (conso->e += 1, 0);
 	return (-1);
 }
 
@@ -82,15 +82,15 @@ int	ft_check_map(char **map, t_game *game)
 {
 	t_map	conso;
 
-	conso.C = 0;
-	conso.E = 0;
-	conso.P = 0;
+	conso.c = 0;
+	conso.e = 0;
+	conso.p = 0;
 	if (ft_check_wall(map) == -1)
 		return (-1);
 	if (ft_check_mid(map, &conso, game) == -1)
 		return (-1);
-	if (conso.C == 0 || conso.E == 0 || conso.P != 1)
+	if (conso.c == 0 || conso.e == 0 || conso.p != 1)
 		return (-1);
-	game->collectible = conso.C;
+	game->collectible = conso.c;
 	return (0);
 }

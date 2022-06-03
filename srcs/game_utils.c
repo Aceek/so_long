@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 05:22:05 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 05:22:25 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 08:43:44 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ int	ft_clean_cool(t_game *game)
 	ft_destroy_tab(game->map);
 	free(game->mlx);
 	exit (0);
+}
+
+void	ft_count_move(int *move)
+{
+	*move += 1;
+	ft_putnbr_fd(*move, 1);
+	ft_putchar_fd('\n', 1);
 }
