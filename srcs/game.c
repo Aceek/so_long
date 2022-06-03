@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 02:47:48 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 03:15:17 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_init_img(t_game *game)
 {
-	game->out = mlx_xpm_file_to_image(game->mlx, "./xpm/door.xpm",
+	game->out = mlx_xpm_file_to_image(game->mlx, "./xpm/door_back.xpm",
 			&game->width, &game->height);
-	game->coin = mlx_xpm_file_to_image(game->mlx, "./xpm/bomb.xpm",
+	game->coin = mlx_xpm_file_to_image(game->mlx, "./xpm/bomb_back.xpm",
 			&game->width, &game->height);	
-	game->pj = mlx_xpm_file_to_image(game->mlx, "./xpm/king.xpm",
+	game->pj = mlx_xpm_file_to_image(game->mlx, "./xpm/king_back.xpm",
 			&game->width, &game->height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./xpm/wall.xpm",
 			&game->width, &game->height);
