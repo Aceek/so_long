@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 04:41:02 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/02 07:20:56 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 02:43:09 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_check_carac(char c, t_map *conso)
 	return (-1);
 }
 
-int	ft_check_mid(char **map, t_map *conso)
+int	ft_check_mid(char **map, t_map *conso, t_game *game)
 {
 	int	ref;
 	int	i;
@@ -59,6 +59,7 @@ int	ft_check_mid(char **map, t_map *conso)
 	ref = (int)ft_strlen(map[i]);
 	if (ref < 3)
 		return (-1);
+	game->width_map = ref;
 	while (map[i] != NULL)
 	{
 		j = 0;
@@ -77,7 +78,7 @@ int	ft_check_mid(char **map, t_map *conso)
 	return (0);
 }
 
-int	ft_check_map(char **map)
+int	ft_check_map(char **map, t_game *game)
 {
 	t_map	conso;
 
@@ -86,13 +87,9 @@ int	ft_check_map(char **map)
 	conso.P = 0;
 	if (ft_check_wall(map) == -1)
 		return (-1);
-	if (ft_check_mid(map, &conso) == -1)
+	if (ft_check_mid(map, &conso, game) == -1)
 		return (-1);
-	if (conso.C == 0)
-		return (-1);
-	if (conso.E == 0)
-		return (-1);
-	if (conso.P != 1)
+	if (conso.C == 0 || conso.E == 0 || conso.P != 1)
 		return (-1);
 	return (0);
 }

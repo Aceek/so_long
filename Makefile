@@ -1,6 +1,6 @@
 NAME			=	so_long
 
-SRCS			=	main.c check_error.c check_map.c
+SRCS			=	main.c check_error.c check_map.c game.c
 
 OBJS			=	${addprefix srcs/,${SRCS:.c=.o}}
 

@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:17:15 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/02 08:18:03 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 02:41:03 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_name(char *map_name)
 	return (0);
 }
 
-char	**create_map(int fd)
+char	**create_map(int fd, t_game *game)
 {
 	char	*line;
 	char	*map_str;
@@ -59,12 +59,14 @@ char	**create_map(int fd)
 	if (!map_str)
 		return (NULL);
 	map_str[0] = '\0';
+	game->height_map = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 		map_str = ft_strjoin2(map_str, line);
+		game->height_map += 1;
 		free(line);
 	}
 	map = ft_split(map_str, '\n');
@@ -72,7 +74,7 @@ char	**create_map(int fd)
 	return (map);
 }
 
-int	ft_check_error(int ac, char *path, char ***map)
+int	ft_check_error(int ac, char *path, char ***map, t_game *game)
 {
 	int		fd;
 
@@ -83,10 +85,10 @@ int	ft_check_error(int ac, char *path, char ***map)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (-3);
-	*map = create_map(fd);
+	*map = create_map(fd, game);
 	if (*map == NULL)
 		return (-1);
-	if (ft_check_map(*map) == -1)
+	if (ft_check_map(*map, game) == -1)
 		return (ft_destroy_tab(*map), -4);
 	close (fd);
 	return (0);
