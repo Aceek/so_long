@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 06:24:59 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 06:47:33 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ int	ft_key_hook(int keycode, t_game *game)
 		ft_clean_cool(game);
 	else if (keycode == 'w' || keycode == 'W')
 		ft_up(game);
+	else if (keycode == 's' || keycode == 'S')
+		ft_down(game);
+	else if (keycode == 'a' || keycode == 'A')
+		ft_left(game);
+	else if (keycode == 'd' || keycode == 'D')
+		ft_right(game);
 	return (0);
 }
 

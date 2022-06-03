@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 08:47:45 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 06:29:01 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 06:53:17 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,38 @@ typedef struct s_map
 	int	E;
 }	t_map;
 
-int		ft_check_error(int ac, char *path, char ***map, t_game *game);
-char	**create_map(int fd, t_game *game);
-int		check_name(char *map_name);
-int		write_error(int error);
-void	ft_destroy_tab(char **tab);
-int		ft_check_map(char **map, t_game *game);
+// Check_error.c
 
-int	ft_show(char **map, t_game *game);
-int	ft_clean_cool(t_game *game);
-void	ft_up(t_game *game);
+void	ft_destroy_tab(char **tab);
+int		write_error(int error);
+int		check_name(char *map_name);
+char	**create_map(int fd, t_game *game);
+int		ft_check_error(int ac, char *path, char ***map, t_game *game);
+
+// check_map.c
+
+int	ft_check_wall(char **map);
+int	ft_check_carac(char c, t_map *conso);
+int	ft_check_mid(char **map, t_map *conso, t_game *game);
+int	ft_check_map(char **map, t_game *game);
+
+// game.c
+
+void	ft_init_img(t_game *game);
+void	ft_put_img(t_game *game, int i, int j);
 void	ft_display_map(t_game *game);
+int		ft_key_hook(int keycode, t_game *game);
+int		ft_show(char **map, t_game *game);
+
+// move.c
+
+void	ft_up(t_game *game);
+void	ft_down(t_game *game);
+void	ft_left(t_game *game);
+void	ft_right(t_game *game);
+
+// game_utils.c
+
+int	ft_clean_cool(t_game *game);
 
 #endif
