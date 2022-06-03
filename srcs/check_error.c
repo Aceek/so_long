@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:17:15 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 02:41:03 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/03 08:31:05 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ char	**create_map(int fd, t_game *game)
 	char	*line;
 	char	*map_str;
 	char	**map;
+	int		i;
 
+	i = 0;
 	map_str = malloc(sizeof(char) * 1);
 	if (!map_str)
 		return (NULL);
@@ -69,9 +71,11 @@ char	**create_map(int fd, t_game *game)
 		game->height_map += 1;
 		free(line);
 	}
+	while (map_str[i++])
+		if (map_str[i] == '\n' && map_str[i + 1] == '\n')
+			return (free(map_str), NULL);
 	map = ft_split(map_str, '\n');
-	free (map_str);
-	return (map);
+	return (free(map_str), map);
 }
 
 int	ft_check_error(int ac, char *path, char ***map, t_game *game)
@@ -80,16 +84,16 @@ int	ft_check_error(int ac, char *path, char ***map, t_game *game)
 
 	if (ac != 2)
 		return (-1);
-	else if (check_name(path) == -1)
+	if (check_name(path) == -1)
 		return (-2);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (-3);
 	*map = create_map(fd, game);
 	if (*map == NULL)
-		return (-1);
+		return (close (fd), -4);
 	if (ft_check_map(*map, game) == -1)
-		return (ft_destroy_tab(*map), -4);
+		return (ft_destroy_tab(*map), close (fd), -4);
 	close (fd);
 	return (0);
 }
