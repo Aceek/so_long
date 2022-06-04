@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/03 08:34:43 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/04 04:49:11 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_init_img(t_game *game)
 {
@@ -28,6 +28,7 @@ void	ft_init_img(t_game *game)
 
 void	ft_put_img(t_game *game, int i, int j)
 {
+	ft_print_move(game);
 	if (game->map[i][j] == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->wall,
 			(j * 64), (i * 64));
