@@ -16,6 +16,8 @@ MLX_FLAGS		=	-lm -lmlx -lXext -lX11
 
 HEAD			=	-I include -I libft -I mlx_linux
 
+HEAD_BONUS		=	-I include_bonus -I libft -I mlx_linux
+
 CC				=	gcc
 
 CFLAGS			=	-Wall -Werror -Wextra -g #-fsanitize=address
@@ -33,7 +35,7 @@ all				:	${NAME}
 bonus			:	${NAME_BONUS}
 
 .c.o			:
-					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
+					${CC} ${CFLAGS} ${HEAD_BONUS} -c $< -o ${<:.c=.o}
 
 ${NAME_BONUS}	:	${OBJS_BONUS}
 					make -C libft
