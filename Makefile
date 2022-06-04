@@ -1,8 +1,14 @@
 NAME			=	so_long
 
+NAME_BONUS		=	so_long_bonus
+
 SRCS			=	main.c check_error.c check_map.c game.c game_utils.c move.c
 
+SRCS_BONUS		=	main_bonus.c check_error_bonus.c check_map_bonus.c game_bonus.c game_utils_bonus.c move_bonus.c
+
 OBJS			=	${addprefix srcs/,${SRCS:.c=.o}}
+
+OBJS_BONUS		=	${addprefix bonus/,${SRCS_BONUS:.c=.o}}
 
 LD_FLAGS		=	-L libft -L mlx_linux
 
@@ -24,6 +30,16 @@ $(NAME)			:	${OBJS}
 
 all				:	${NAME}
 
+bonus			:	${NAME_BONUS}
+
+.c.o			:
+					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
+
+${NAME_BONUS}	:	${OBJS_BONUS}
+					make -C libft
+					make -C mlx_linux
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_BONUS} -o ${NAME_BONUS} -lft ${MLX_FLAGS}
+
 val				:	${NAME}
 					valgrind \
 					--leak-check=full --tool=memcheck \
@@ -36,10 +52,12 @@ clean			:
 					make clean -C libft
 					make clean -C mlx_linux
 					@rm -rf ${OBJS}
+					@rm -rf ${OBJS_BONUS}
 
 fclean			:	clean
 					make fclean -C libft
 					@rm -rf ${NAME}
+					@rm -rf ${NAME_BONUS}
 
 re				:	fclean all
 
