@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 05:25:16 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 04:49:24 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/04 07:36:15 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_up(t_game *game)
 	{
 		if (game->map[i - 1][j] == 'C')
 			game->collectible -= 1;
-		if (game->map[i - 1][j] == 'E' && game->collectible == 0)
+		if ((game->map[i - 1][j] == 'E' && game->collectible == 0)
+		|| game->map[i - 1][j] == 'B')
 		{
 			ft_count_move(&game->move);
 			ft_clean_cool(game);
@@ -48,7 +49,8 @@ void	ft_down(t_game *game)
 	{
 		if (game->map[i + 1][j] == 'C')
 			game->collectible -= 1;
-		if (game->map[i + 1][j] == 'E' && game->collectible == 0)
+		if ((game->map[i + 1][j] == 'E' && game->collectible == 0)
+		|| game->map[i + 1][j] == 'B')
 		{
 			ft_count_move(&game->move);
 			ft_clean_cool(game);
@@ -73,7 +75,8 @@ void	ft_left(t_game *game)
 	{
 		if (game->map[i][j - 1] == 'C')
 			game->collectible -= 1;
-		if (game->map[i][j - 1] == 'E' && game->collectible == 0)
+		if ((game->map[i][j - 1] == 'E' && game->collectible == 0)
+		|| game->map[i][j - 1] == 'B')
 		{
 			ft_count_move(&game->move);
 			ft_clean_cool(game);
@@ -98,7 +101,8 @@ void	ft_right(t_game *game)
 	{
 		if (game->map[i][j + 1] == 'C')
 			game->collectible -= 1;
-		if (game->map[i][j + 1] == 'E' && game->collectible == 0)
+		if ((game->map[i][j + 1] == 'E' && game->collectible == 0)
+		|| game->map[i][j + 1] == 'B')
 		{
 			ft_count_move(&game->move);
 			ft_clean_cool(game);

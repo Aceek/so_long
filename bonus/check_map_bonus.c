@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 04:41:02 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 04:49:06 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/04 07:28:07 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_check_carac(char c, t_map *conso)
 		return (conso->p += 1, 0);
 	else if (c == 'E')
 		return (conso->e += 1, 0);
+	else if (c == 'B')
+		return (0);
 	return (-1);
 }
 

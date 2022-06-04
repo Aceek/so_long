@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 08:47:45 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 04:49:55 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/04 07:25:37 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_game {
 	void	*coin;
 	void	*out;
 	void	*back;
+	void	*bomb;
 	char	**map;
 	int		height;
 	int		width;

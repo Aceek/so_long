@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 04:49:11 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/04 07:36:58 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ void	ft_init_img(t_game *game)
 {
 	game->out = mlx_xpm_file_to_image(game->mlx, "./xpm/door_back.xpm",
 			&game->width, &game->height);
-	game->coin = mlx_xpm_file_to_image(game->mlx, "./xpm/bomb_back.xpm",
+	game->bomb = mlx_xpm_file_to_image(game->mlx, "./xpm/bomb_back.xpm",
 			&game->width, &game->height);
 	game->pj = mlx_xpm_file_to_image(game->mlx, "./xpm/king_back.xpm",
 			&game->width, &game->height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./xpm/wall.xpm",
 			&game->width, &game->height);
 	game->back = mlx_xpm_file_to_image(game->mlx, "./xpm/back.xpm",
+			&game->width, &game->height);
+	game->coin = mlx_xpm_file_to_image(game->mlx, "./xpm/coin_back.xpm",
 			&game->width, &game->height);
 }
 
@@ -43,6 +45,9 @@ void	ft_put_img(t_game *game, int i, int j)
 			(j * 64), (i * 64));
 	else if (game->map[i][j] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->out,
+			(j * 64), (i * 64));
+	else if (game->map[i][j] == 'B')
+		mlx_put_image_to_window(game->mlx, game->win, game->bomb,
 			(j * 64), (i * 64));
 }
 
