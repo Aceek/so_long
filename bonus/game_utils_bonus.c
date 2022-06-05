@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 05:22:05 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 04:49:16 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/05 03:20:38 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int	ft_clean_cool(t_game *game)
 	mlx_destroy_image(game->mlx, game->out);
 	mlx_destroy_image(game->mlx, game->pj);
 	mlx_destroy_image(game->mlx, game->coin);
+	mlx_destroy_image(game->mlx, game->bomb1);
+	mlx_destroy_image(game->mlx, game->bomb2);
+	mlx_destroy_image(game->mlx, game->bomb3);
+	mlx_destroy_image(game->mlx, game->bomb4);
 	mlx_destroy_image(game->mlx, game->back);
 	mlx_destroy_display(game->mlx);
 	ft_destroy_tab(game->map);

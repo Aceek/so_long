@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/05 03:15:51 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/05 03:26:12 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_put_img(t_game *game, int i, int j)
 	else if (game->map[i][j] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->out,
 			(j * 64), (i * 64));
-	else if (game->map[i][j] == 'B' && i % 2 == 0)
+	else if (game->map[i][j] == 'B')
 		ft_animate(game, i, j);
 }
 
