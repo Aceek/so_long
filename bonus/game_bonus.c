@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 00:54:18 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 07:36:58 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/05 03:15:51 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	ft_init_img(t_game *game)
 {
 	game->out = mlx_xpm_file_to_image(game->mlx, "./xpm/door_back.xpm",
 			&game->width, &game->height);
-	game->bomb = mlx_xpm_file_to_image(game->mlx, "./xpm/bomb_back.xpm",
-			&game->width, &game->height);
 	game->pj = mlx_xpm_file_to_image(game->mlx, "./xpm/king_back.xpm",
 			&game->width, &game->height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./xpm/wall.xpm",
@@ -26,6 +24,7 @@ void	ft_init_img(t_game *game)
 			&game->width, &game->height);
 	game->coin = mlx_xpm_file_to_image(game->mlx, "./xpm/coin_back.xpm",
 			&game->width, &game->height);
+	ft_init_bomb(game);
 }
 
 void	ft_put_img(t_game *game, int i, int j)
@@ -46,12 +45,11 @@ void	ft_put_img(t_game *game, int i, int j)
 	else if (game->map[i][j] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->out,
 			(j * 64), (i * 64));
-	else if (game->map[i][j] == 'B')
-		mlx_put_image_to_window(game->mlx, game->win, game->bomb,
-			(j * 64), (i * 64));
+	else if (game->map[i][j] == 'B' && i % 2 == 0)
+		ft_animate(game, i, j);
 }
 
-void	ft_display_map(t_game *game)
+int	ft_display_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -72,6 +70,7 @@ void	ft_display_map(t_game *game)
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	ft_key_hook(int keycode, t_game *game)
@@ -93,6 +92,7 @@ int	ft_key_hook(int keycode, t_game *game)
 int	ft_show(char **map, t_game *game)
 {
 	game->move = 0;
+	game->pos = 0;
 	game->map = map;
 	game->mlx = mlx_init();
 	ft_init_img(game);
@@ -101,6 +101,7 @@ int	ft_show(char **map, t_game *game)
 	ft_display_map(game);
 	mlx_key_hook(game->win, ft_key_hook, game);
 	mlx_hook(game->win, 17, 0, ft_clean_cool, game);
+	mlx_loop_hook(game->mlx, ft_display_map, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

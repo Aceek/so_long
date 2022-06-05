@@ -6,7 +6,7 @@
 /*   By: ilinhard <ilinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 08:47:45 by ilinhard          #+#    #+#             */
-/*   Updated: 2022/06/04 07:25:37 by ilinhard         ###   ########.fr       */
+/*   Updated: 2022/06/05 03:11:53 by ilinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <math.h>
 
 typedef struct s_game {
+	int		pos;
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -28,7 +30,10 @@ typedef struct s_game {
 	void	*coin;
 	void	*out;
 	void	*back;
-	void	*bomb;
+	void	*bomb1;
+	void	*bomb2;
+	void	*bomb3;
+	void	*bomb4;
 	char	**map;
 	int		height;
 	int		width;
@@ -66,7 +71,7 @@ int		ft_check_map(char **map, t_game *game);
 
 void	ft_init_img(t_game *game);
 void	ft_put_img(t_game *game, int i, int j);
-void	ft_display_map(t_game *game);
+int		ft_display_map(t_game *game);
 int		ft_key_hook(int keycode, t_game *game);
 int		ft_show(char **map, t_game *game);
 
@@ -82,5 +87,11 @@ void	ft_right(t_game *game);
 int		ft_clean_cool(t_game *game);
 void	ft_count_move(int *move);
 void	ft_print_move(t_game *game);
+
+// animation.c
+
+int		ft_animate(t_game *game, int i, int j);
+void	ft_init_img(t_game *game);
+void	ft_init_bomb(t_game *game);
 
 #endif

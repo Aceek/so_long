@@ -6,7 +6,7 @@ HEADER_FILE_BONUS	=	-I bonus/include_bonus -I libft -I mlx_linux
 
 SRCS				=	main.c check_error.c check_map.c game.c game_utils.c move.c
 
-SRCS_BONUS			=	main_bonus.c check_error_bonus.c check_map_bonus.c game_bonus.c game_utils_bonus.c move_bonus.c
+SRCS_BONUS			=	main_bonus.c check_error_bonus.c check_map_bonus.c game_bonus.c game_utils_bonus.c move_bonus.c animation_bonus.c
 
 OBJS				=	${addprefix srcs/,${SRCS:.c=.o}}
 
